@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-SoftdevBackendApplication<softdev-backend>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.example.softdevbackend.SoftdevBackendApplication",
+      "projectName": "softdev-backend",
+      "args": ""
+    }
+  ]
+}
