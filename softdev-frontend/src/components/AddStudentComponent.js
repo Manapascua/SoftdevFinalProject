@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom';
 import StudentServices from '../services/StudentServices'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AddStudentComponent = () => {
 
@@ -9,7 +9,6 @@ const AddStudentComponent = () => {
     const [lastName, setLastName] = useState('')
     const [emailId, setEmailId] = useState('')
     const navigate = useNavigate();
-    const {id} = useParams();
 
     const saveStudent = (e) => {
         e.preventDefault();
@@ -26,34 +25,15 @@ const AddStudentComponent = () => {
         console.log(error)
        })
     }
-    useEffect(() => {
-        StudentServices.getStudentbyId(id).then((response) =>{
-            setFirstName(response.data.firstName)
-            setLastName(response.data,lastName)
-            setEmailId(response.data.emailId)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [])
 
     
-    const title = () => {
-
-        if(id){
-            return <h2 className = "text-center"> Update Student</h2>
-        }else{
-            return <h2 className = "text-center"> Add Student</h2>
-        }
-    }
     return (
         <div>
           <br/><br/>
             <div className = "container">
                 <div className ="row">
                     <div className = "card col-md-5 offset-md-3 offset-md-3"></div>
-                        {
-                            title()
-                        }
+                    <h2 className = "text-center">Add Student</h2>
                     <div className ="card body">
                         <form>
                             <div className = "form-group mb-2">
@@ -81,7 +61,7 @@ const AddStudentComponent = () => {
                                     >
                                 </input>
                             </div>
- 
+
                             <div className = "form-group mb-2">
                                 <label className = "form-label">Email Id :</label>
                                 <input 

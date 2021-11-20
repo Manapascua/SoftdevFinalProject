@@ -12,8 +12,9 @@ class StudentService {
     }
 
     getStudentbyId(studentId){
-        return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + studentId);
+        return axios.get(STUDENTS_BASE_REST_API_URL + '/' + studentId);
     }
+
 }
 
 export default new StudentService();

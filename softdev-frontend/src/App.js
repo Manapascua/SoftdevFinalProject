@@ -15,7 +15,6 @@ function App() {
           <Route path = "/" element = {<ListStudentComponent/>}></Route>
           <Route path ="/students" element ={<ListStudentComponent/>}></Route>
           <Route path ="/add-student" element ={<AddStudentComponent/>}></Route>
-          <Route path ="/edit-student/:id" component = {AddStudentComponent}></Route> 
           </Routes>
       </div>
       <FooterComponent />
