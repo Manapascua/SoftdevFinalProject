@@ -7,6 +7,7 @@ import com.example.softdevbackend.model.Student;
 import com.example.softdevbackend.repository.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class StudentController {
     @PutMapping("{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable long id,@RequestBody Student studentDetails){
         Student updateStudent = studentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id"));
+            .orElseThrow(() -> new ResourceNotFoundException("Student not exist with id" + id));
 
         updateStudent.setFirstName(studentDetails.getFirstName());
         updateStudent.setLastName(studentDetails.getFirstName());
@@ -48,5 +49,14 @@ public class StudentController {
 
         return ResponseEntity.ok(updateStudent);
 
+    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deleteStudent(long id){
+        Student student = studentRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Student not exist with id" + id));
+
+        studentRepository.delete(student);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
