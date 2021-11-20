@@ -6,10 +6,7 @@ import com.example.softdevbackend.model.Student;
 import com.example.softdevbackend.repository.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
@@ -22,5 +19,10 @@ public class StudentController {
     @GetMapping
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
+    }
+
+    @PostMapping
+    public Student createStudent(@RequestBody Student student){
+    return studentRepository.save(student);
     }
 }
