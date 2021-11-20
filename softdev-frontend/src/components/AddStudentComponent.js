@@ -11,20 +11,31 @@ const AddStudentComponent = () => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const saveStudent = (e) => {
+    const saveorupdateStudent = (e) => {
         e.preventDefault();
 
         const student = {firstName, lastName, emailId}
 
-       StudentServices.createStudent(student).then((response) =>{
+        if(id){
+            StudentServices.updateStudentt(id, student).then((response) =>{
+                history.push('/students')
+            }).catch(error =>{
+                console.log(error)
+            })
+
+        }else{
+            StudentServices.createStudent(student).then((response) =>{
            
-        console.log(response.data)
+                console.log(response.data)
+        
+                navigate('/students');
+        
+               }).catch(error => {
+                console.log(error)
+               })
+        }
 
-        navigate('/students');
-
-       }).catch(error => {
-        console.log(error)
-       })
+     
     }
     useEffect(() => {
         StudentServices.getStudentbyId(id).then((response) =>{
@@ -95,7 +106,7 @@ const AddStudentComponent = () => {
                                 </input>
                             </div>
 
-                            <button className ="btn btn-success" onClick = {(e) => saveStudent(e)} >Submit</button>
+                            <button className ="btn btn-success" onClick = {(e) => saveorupdateStudent(e)} >Submit</button>
                             <Link to="/students" className="btn btn-danger"> Cancel </Link>
                         </form>
                     </div>
