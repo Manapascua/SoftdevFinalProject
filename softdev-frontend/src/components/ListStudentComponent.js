@@ -1,18 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
+import StudentServices from '../services/StudentServices'
 
 const ListStudentComponent = () => {
 
     const [students, setStudents] = useState([])
+
+    useEffect(() => {
+
+        StudentServices.getAllStudents().then((response) => {
+            setStudents(response.data)
+            console.log(response.data);
+        }).catch(error =>{
+            console.log(error);
+        })
+    }, [])
 
     return (
         <div className = "container">
             <h2 className = "text-center"> List Students </h2>
             <table className = "table table-bordered table-striped">
                 <thead>
+                    <tr>
                     <th> Student Id </th>
                     <th> Student First Name </th>
                     <th> Student Last Name </th>
                     <th> Student Email Address </th>
+                    </tr>
                 </thead>
                 <tbody>
                     {

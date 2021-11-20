@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SoftdevFinalProject.iml" filepath="$PROJECT_DIR$/.idea/SoftdevFinalProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/softdev-backend/softdev-backend.iml" filepath="$PROJECT_DIR$/softdev-backend/softdev-backend.iml" />
+    </modules>
+  </component>
+</project>
