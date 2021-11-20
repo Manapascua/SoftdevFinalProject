@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom';
 import StudentServices from '../services/StudentServices'
+import { Link } from 'react-router-dom';
 
 const AddStudentComponent = () => {
 
@@ -75,6 +76,7 @@ const AddStudentComponent = () => {
                             </div>
 
                             <button className ="btn btn-success" onClick = {(e) => saveStudent(e)} >Submit</button>
+                            <Link to="/students" className="btn btn-danger"> Cancel </Link>
                         </form>
                     </div>
                 </div>
