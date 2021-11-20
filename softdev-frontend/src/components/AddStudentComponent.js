@@ -1,19 +1,31 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom';
+import StudentServices from '../services/StudentServices'
 
 const AddStudentComponent = () => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [emailId, setEmailId] = useState('')
+    const navigate = useNavigate();
 
     const saveStudent = (e) => {
         e.preventDefault();
 
         const student = {firstName, lastName, emailId}
 
-        console.log(student);
+       StudentServices.createStudent(student).then((response) =>{
+           
+        console.log(response.data)
+
+        navigate('/students');
+
+       }).catch(error => {
+        console.log(error)
+       })
     }
 
+    
     return (
         <div>
           <br/><br/>

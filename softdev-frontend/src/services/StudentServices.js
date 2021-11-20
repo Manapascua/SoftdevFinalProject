@@ -6,6 +6,10 @@ class StudentService {
     getAllStudents(){
         return axios.get(STUDENTS_BASE_REST_API_URL)
     }
+
+    createStudent(student){
+        return axios.post(STUDENTS_BASE_REST_API_URL, student )
+    }
 }
 
 export default new StudentService();
