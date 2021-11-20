@@ -10,6 +10,10 @@ class StudentService {
     createStudent(student){
         return axios.post(STUDENTS_BASE_REST_API_URL, student )
     }
+
+    getStudentbyId(studentId){
+        return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + studentId);
+    }
 }
 
 export default new StudentService();
