@@ -29,9 +29,24 @@ public class StudentController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Student> getStudentById(long id){
+    public ResponseEntity<Student> getStudentById(@PathVariable long id){
         Student student = studentRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Student not exist with id"));
         return ResponseEntity.ok(student);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable long id,@RequestBody Student studentDetails){
+        Student updateStudent = studentRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id"));
+
+        updateStudent.setFirstName(studentDetails.getFirstName());
+        updateStudent.setLastName(studentDetails.getFirstName());
+        updateStudent.setEmailId(studentDetails.getEmailId());
+
+        studentRepository.save(updateStudent);
+
+        return ResponseEntity.ok(updateStudent);
+
     }
 }

@@ -32,4 +32,27 @@ public class Student {
 
     @Column(name = "email_id")
     private String emailId;
+
+    public Object getFirstName() {
+        return null;
+    }
+
+    public void setFirstName(Object firstName2) {
+    }
+
+    public Object getEmailId() {
+        return null;
+    }
+
+    public void setEmailId(Object emailId2) {
+    }
+
+    public Object getLastName(){
+        return null;
+    }
+    
+    public void setLastName(Object firstName2) {
+    }
+
+    
 }
