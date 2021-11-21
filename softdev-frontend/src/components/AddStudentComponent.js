@@ -18,7 +18,7 @@ const AddStudentComponent = () => {
 
         if(id){
             StudentServices.updateStudentt(id, student).then((response) =>{
-                history.push('/students')
+                History.push('/students')
             }).catch(error =>{
                 console.log(error)
             })
@@ -40,12 +40,12 @@ const AddStudentComponent = () => {
     useEffect(() => {
         StudentServices.getStudentbyId(id).then((response) =>{
             setFirstName(response.data.firstName)
-            setLastName(response.data,lastName)
+            setLastName(response.data.lastName)
             setEmailId(response.data.emailId)
         }).catch(error => {
             console.log(error)
         })
-    }, [])
+    }, [id])
 
     
     const title = () => {
